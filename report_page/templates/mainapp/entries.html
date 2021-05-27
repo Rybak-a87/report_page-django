@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+
+{% block title %}Записи{% endblock title %}
+
+{% block main %}
+
+    <a class="btn btn-primary" href="{% url 'mainapp:create_entry_page' %}">Добавить запись</a>
+    <h1 class="text-center" style="color: brown;">Записи</h1>
+
+    {% for entry in entries %}
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <p><h3 class="h3">{{ entry.title }}</h3></p>
+                <p><strong><i>Пользователь:</i></strong> {{ entry.user.username }}</p>
+                <p><strong><i>Расстояние:</i></strong> {{ entry.distance }} км.</p>
+                <p><strong><i>Продолжительность времени:</i></strong> {{ entry.duration }} ч.</p>
+                <p><strong><i>Средняя скорость:</i></strong> {{ entry.average_speed }} км/ч</p>
+                <p>
+                    <a class="btn btn-danger" href="{% url 'mainapp:update_entry_page' pk=entry.id %}">Редактировать</a>
+                </p>
+                <hr>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock main %}
