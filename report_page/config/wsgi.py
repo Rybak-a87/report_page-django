@@ -8,5 +8,5 @@ application = get_wsgi_application()
 
 
 # for deploy heroku
-from whitenoise import WhiteNoise
-application = WhiteNoise(application)
+# from whitenoise import WhiteNoise
+# application = WhiteNoise(application)

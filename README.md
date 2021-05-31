@@ -10,6 +10,7 @@
 > $ git clone https://github.com/Rybak-a87/report_page-django.git
 - Миграции
 > $ python manage.py makemigrations
+> 
 > $ python manage.py migrate
 - Создать супер-пользователя  
 > $ python manage.py createsuperuser
