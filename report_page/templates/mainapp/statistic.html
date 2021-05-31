@@ -1,24 +1,40 @@
 {% extends "base/base.html" %}
+{% load calculate_total_sum %}
+
 
 {% block title %}Статистика{% endblock title %}
 
 {% block main %}
 
     <h1 class="text-center" style="color: brown;">Статистика</h1>
-
-    {% for week in weeks %}
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <p>
-                  <h4>Номер недели: {{ week.week_number }}</h4>
-                </p>
-                <p><strong><i>Количество записей:</i></strong> {{ week.total_entries }}</p>
-                <p><strong><i>Общее расстояние:</i></strong> {{ week.total_distance }}</p>
-                <p><strong><i>Общая продолжительность времени:</i></strong> {{ week.total_duration }}</p>
-                <p><strong><i>Средняя скорость за неделю:</i></strong> {{ week.average_speed }}</p>
-                <hr>
-            </div>
-        </div>
-    {% endfor %}
+<div class="col-lg-7 m-auto text-center">
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Год</th>
+            <th scope="col">Номер недели</th>
+            <th scope="col">Количество записей</th>
+            <th scope="col">Общее расстояние</th>
+            <th scope="col">Общая продолжительность времени</th>
+            <th scope="col">Средняя скорость за неделю</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for week in weeks %}
+            {% if week.entry.count > 0 %}
+                {% sum_attrs week.entry.all as total %}
+                <tr>
+                    <td>{{ week.year }}</td>
+                    <th scope="row">{{ week.week_number }}</th>
+                    <td>{{ week.entry.count }}</td>
+                    <td>{{ total.distance }} км.</td>
+                    <td>{{ total.duration }} ч.</td>
+                    <td>{{ total.average_speed }} км/ч</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+</div>
 
 {% endblock main %}

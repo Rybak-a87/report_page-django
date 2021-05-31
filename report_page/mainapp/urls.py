@@ -11,4 +11,6 @@ urlpatterns = [
     path("statistic/", views.StatisticListView.as_view(), name="statistic_page"),
     path("create-entry/", views.CreateEntry.as_view(), name="create_entry_page"),
     path("update-entry/<int:pk>/", views.EntryUpdateView.as_view(), name="update_entry_page"),
+    path("entry/<int:pk>/", views.EntryDetailView.as_view(), name="entry_detail_page"),
+    path("delete-entry/<int:pk>/", views.EntryDeleteView.as_view(), name="entry_delete_page"),
 ]

@@ -3,11 +3,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Account(AbstractUser):
-    USER = ("user", "Пользователь")
+    """Расширение полей модели пользователя"""
     MANAGER = ("manager", "Менеджер")
     ADMINISTRATOR = ("administrator", "Администратор")
     STATUS_CHOICE = (
-        USER, MANAGER, ADMINISTRATOR
+        MANAGER, ADMINISTRATOR
     )
     role = models.CharField(
         verbose_name="Роль пользователя",

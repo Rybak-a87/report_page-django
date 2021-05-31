@@ -1,0 +1,21 @@
+{% extends "base/base.html" }
+
+{% extends "base/base.html" %}
+
+{% block title %}{{entry.title}}{% endblock title %}
+
+{% block main %}
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <div class="features">
+                    <h3 class="h3">Вы хорошо подумали?</h3>
+                    <br>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Удалить">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock main %}

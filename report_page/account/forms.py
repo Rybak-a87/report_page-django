@@ -7,7 +7,6 @@ class LoginForm(forms.ModelForm):
     """
     Форма для авторизации пользователя
     """
-
     username = forms.CharField(widget=forms.TextInput(attrs={
         "class": "form-control",
         "placeholder": "Логин",

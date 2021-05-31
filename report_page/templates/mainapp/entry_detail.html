@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{entry.title}}{% endblock title %}
+
+{% block main %}
+        {% if request.user.username == entry.user.username %}
+            <div class="row text-center pt-3">
+                <div class="col-lg-6 m-auto">
+                    <p><h2 class="h2">{{ entry.title }}</h2></p>
+                    <p><strong><i>Пользователь:</i></strong> {{ entry.user.username }}</p>
+                    <p><strong><i>Расстояние:</i></strong> {{ entry.distance }} км.</p>
+                    <p><strong><i>Продолжительность времени:</i></strong> {{ entry.duration }} ч.</p>
+                    <p><strong><i>Средняя скорость:</i></strong> {{ entry.average_speed }} км/ч</p>
+                    <p><strong><i>Дата добавления:</i></strong> {{ entry.date }}</p>
+                    <p>
+                        <a class="btn btn-primary" href="{% url 'mainapp:update_entry_page' pk=entry.id %}">Редактировать</a>
+                        <a class="btn btn-danger" href="{% url 'mainapp:entry_delete_page' pk=entry.id %}">Удалить</a>
+                    </p>
+                </div>
+            </div>
+        {% else %}
+            <h1>Error 403</h1>
+        {% endif %}
+
+{% endblock main %}

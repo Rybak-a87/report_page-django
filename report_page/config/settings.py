@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_%-3*^cwpuq=@g($yvn0h84b(@9c*xt1np%^j4dw85%0z8*@ha
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "account.Account"
 
@@ -132,3 +132,12 @@ STATICFILES_DIRS = (STATIC_DIR,)
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# for deploy heroku
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES["default"].update(db_from_env)
+
+import django_heroku
+django_heroku.settings(locals())

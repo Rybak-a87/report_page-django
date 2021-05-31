@@ -11,11 +11,11 @@ class EntryModel(models.Model):
     title = models.CharField(verbose_name="Название", max_length=255)
     distance = models.FloatField(verbose_name="Расстояние")
     duration = models.FloatField(verbose_name="Продолжительность времени")
-    date = models.DateTimeField(verbose_name="Дата создания записи", auto_now=True)
-    average_speed = models.FloatField(verbose_name="Средняя скорость")
+    date = models.DateTimeField(verbose_name="Дата создания записи", auto_now_add=True)
+    average_speed = models.FloatField(verbose_name="Средняя скорость", null=True, blank=True)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.title}"
 
     def get_absolute_url(self):
         return "/entries/"
@@ -27,11 +27,13 @@ class EntryModel(models.Model):
 
 class StatisticModel(models.Model):
     """модель статистики"""
-    week_number = models.PositiveIntegerField(verbose_name="Номер недели")
-    total_entries = models.PositiveIntegerField(verbose_name="Количество записей")
-    total_distance = models.FloatField(verbose_name="Общее расстояние")
-    total_duration = models.FloatField(verbose_name="Общая продолжительность времени")
-    average_speed = models.FloatField(verbose_name="Средняя скорость за неделю")
+    year = models.PositiveSmallIntegerField(verbose_name="Год")
+    week_number = models.PositiveSmallIntegerField(verbose_name="Номер недели")
+    entry = models.ManyToManyField(EntryModel, verbose_name="Запись", blank=True)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"year: {self.year}, week: {self.week_number}"
+
+    class Meta:
+        verbose_name = "Статистику"
+        verbose_name_plural = "Статистика"

@@ -4,6 +4,7 @@ from .models import EntryModel
 
 
 class CreateEntryForm(forms.ModelForm):
+    """Форма для создания и редактирования записи"""
     title = forms.CharField(widget=forms.TextInput(attrs={
         "class": "form-control",
         "placeholder": "Название записи",
