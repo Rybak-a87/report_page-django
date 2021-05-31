@@ -3,7 +3,7 @@
 ### Использовалось:
 - Django
 - немного Bootstrap
-- Deploy на Heroku
+- <a href="https://report-page-django-rybak.herokuapp.com/">Deploy на Heroku</a>
 ---
 ### Запуск на локальном сервере:
 - Скачать репозиторий с GitHub:
