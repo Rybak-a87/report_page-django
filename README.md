@@ -7,14 +7,14 @@
 ---
 ### Запуск на локальном сервере:
 - Скачать репозиторий с GitHub:
-$ git clone https://github.com/Rybak-a87/report_page-django.git
-- Миграции 
-$ python manage.py makemigrations
-$ python manage.py migrate
+> $ git clone https://github.com/Rybak-a87/report_page-django.git
+- Миграции
+> $ python manage.py makemigrations
+> $ python manage.py migrate
 - Создать супер-пользователя  
-$ python manage.py createsuperuser
+> $ python manage.py createsuperuser
 - Запустить локальный сервер (127.0.0.1:8000)
-$ python manage.py runserver
+> $ python manage.py runserver
 
 ---
 > ### Тестовое задание
